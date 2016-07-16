@@ -1,7 +1,7 @@
 {
   "name": "generate-templates-transform",
   "description": "Transform a list of templates files in the current working directory or specified `--dest`.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/pointnet/generate-templates-transform",
   "author": "Aurelien Verla (https://github.com/pointnet)",
   "repository": "pointnet/generate-templates-transform",
