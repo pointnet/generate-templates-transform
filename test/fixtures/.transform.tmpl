@@ -1,0 +1,37 @@
+---
+rename:
+  basename: generator.tasks.js
+---
+'use strict';
+
+module.exports = function(app, base, env, options) {
+<% templates.forEach(function(template) { %>  /**
+   * Generate a <%= template.metadata.description %> `<%= template.metadata.rename %>`
+   * file in the current working directory.
+   *
+   * ```sh
+   * $ gen license:<%= template.metadata.name %>
+   * $ gen license:<%= template.metadata.name %> --dest ./docs
+   * $ gen dest license:<%= template.metadata.name %>
+   * ```
+   * @name <%= template.metadata.name %>
+   * @api public
+   */
+
+  app.task('<%= template.metadata.name %>', { silent: true }, function() {
+    return file(app, '<%= template.file.relative %>');
+  });
+
+<% }); %>
+};
+
+/**
+ * Generate a file
+ */
+
+function file(app, name) {
+  return app.src(name, { cwd: __dirname })
+    .pipe(app.renderFile('*'))
+    .pipe(app.conflicts(app.cwd))
+    .pipe(app.dest(app.cwd));
+}

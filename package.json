@@ -1,0 +1,69 @@
+{
+  "name": "generate-templates-tranform",
+  "description": "Transform a list of templates files in the current working directory or specified `--dest`.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/pointnet/generate-templates-tranform",
+  "author": "Aurelien Verla (https://github.com/pointnet)",
+  "repository": "pointnet/generate-templates-tranform",
+  "bugs": {
+    "url": "https://github.com/pointnet/generate-templates-tranform/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "generator.js",
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "main": "generator.js",
+  "preferGlobal": true,
+  "engines": {
+    "node": ">=4.0"
+  },
+  "scripts": {
+    "lint": "eslint ./*.js ./test",
+    "test": "mocha --recursive ./**/*.test.js"
+  },
+  "dependencies": {
+    "generate-collections": "^0.3.5",
+    "generate-defaults": "^0.4.0",
+    "is-valid-app": "^0.2.0"
+  },
+  "devDependencies": {
+    "delete": "^0.3.2",
+    "generate": "^0.9.5",
+    "global-modules": "^0.2.2",
+    "gulp-format-md": "^0.1.9",
+    "mocha": "^2.5.3",
+    "npm-install-global": "^0.1.2"
+  },
+  "keywords": [
+    "babelrc",
+    "cli",
+    "cli-app",
+    "command-line",
+    "dev",
+    "development",
+    "framework",
+    "generate",
+    "generate-generator",
+    "generate-plugin",
+    "generategenerator",
+    "generateplugin",
+    "generator",
+    "plugin",
+    "scaffold",
+    "scaffolder",
+    "scaffolding",
+    "template",
+    "templates",
+    "webapp",
+    "yeoman",
+    "yo"
+  ],
+  "lintDeps": {
+    "ignore": [
+      "templates"
+    ]
+  }
+}
