@@ -24,8 +24,8 @@ module.exports = function(app, base, env, options) {
    * @api public
    */
 
-  app.task('default', { silent: true }, ['templates-transform']);
-  app.task('templates-transform', ['ask-template', 'ask-source'], function(callback) {
+  app.task('default', { silent: true }, ['run-templates-transform']);
+  app.task('run-templates-transform', ['ask-template', 'ask-source'], function(callback) {
     app.includes('*', { cwd: path.resolve(app.options.source) });
     var includes = app.views.includes;
     var keys = Object.keys(includes);
@@ -37,7 +37,7 @@ module.exports = function(app, base, env, options) {
           name: path.basename(key),
           path: key,
           ext: d.ext,
-          relative: path.normalize(path.relative(__dirname, key)).replace(/\\/gi, '/')
+          relative: path.normalize(path.relative(process.cwd(), key)).replace(/\\/gi, '/')
         },
         metadata: d['templates-transform']
       };
@@ -45,7 +45,7 @@ module.exports = function(app, base, env, options) {
       return item !== null;
     });
     app.data({ templates: datas });
-    return app.src(app.options.template, { cwd: __dirname })
+    return app.src(app.options.template, { cwd: process.cwd() })
       .pipe(app.renderFile('*'))
       .pipe(app.conflicts(app.cwd))
       .pipe(app.dest(app.cwd));
